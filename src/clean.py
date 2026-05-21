@@ -17,6 +17,7 @@ def main():
     df["duration_seconds"] = pd.to_numeric(df["duration_seconds"], errors="coerce")
     df = df.dropna(subset=["duration_seconds"])
     df = df[df["duration_seconds"] > 0]
+    df["duration_seconds"] = df["duration_seconds"].astype(int)
 
     df["timestamp"] = pd.to_datetime(df["timestamp"], format="mixed")
     df["timestamp"] = df["timestamp"].dt.strftime("%Y-%m-%dT%H:%M:%S")
